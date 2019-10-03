@@ -1,0 +1,14 @@
+{
+    "name": "locomotif/testimonials",
+    "description": "Testimonials package for Locomotif CMS.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Popa",
+            "email": "p.alexandruadrian@yahoo.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
