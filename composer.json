@@ -17,5 +17,11 @@
                 "Locomotif\\Testimonials\\TestimonialsServiceProvider"
             ]
         }
+    },
+    "autoload": {
+       "psr-4": {
+           "Locomotif\\Testimonials\\": "testimonials/src/"
+        }
     }
+    
 }
