@@ -13,7 +13,7 @@ class TestimonialsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('Locomotif\Testimonials\TestimonialsController');
+        $this->app->make('Locomotif\Testimonials\Controller\TestimonialsController');
     }
 
     /**
@@ -23,7 +23,7 @@ class TestimonialsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/Routes.php');
+        $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
         $this->loadViewsFrom(__DIR__.'/views/', 'testimonials');
     }
 }
