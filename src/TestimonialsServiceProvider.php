@@ -25,5 +25,6 @@ class TestimonialsServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
         $this->loadViewsFrom(__DIR__.'/views/', 'testimonials');
+        $this->loadMigrationsFrom(__DIR__.'/Database/Migrations/');
     }
 }
