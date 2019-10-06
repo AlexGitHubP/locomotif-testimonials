@@ -4,6 +4,8 @@ namespace Locomotif\Testimonials\Controller;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Locomotif\Testimonials\Model\Testimonials;
+
 
 class TestimonialsController extends Controller
 {
@@ -14,7 +16,11 @@ class TestimonialsController extends Controller
      */
     public function index()
     {
-        return view('testimonials::list');
+        $testimonials = Testimonials::all();
+        
+        //dd($testimonials);
+
+        return view('testimonials::list')->with('testimonials',$testimonials);
     }
 
     /**
@@ -24,7 +30,7 @@ class TestimonialsController extends Controller
      */
     public function create()
     {
-        //
+        return view('testimonials::create');
     }
 
     /**
@@ -35,7 +41,9 @@ class TestimonialsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $testimonial = Testimonials::create(['name' => $request->name,'text' => $request->text]);
+        return redirect('/testimonials/'.$testimonial->id);
     }
 
     /**
@@ -44,9 +52,9 @@ class TestimonialsController extends Controller
      * @param  \App\Testimonials  $testimonials
      * @return \Illuminate\Http\Response
      */
-    public function show(Testimonials $testimonials)
-    {
-        //
+    public function show(Testimonials $testimonial)
+    {      
+        return view('testimonials::show')->with('testimonial', $testimonial);
     }
 
     /**
@@ -55,9 +63,9 @@ class TestimonialsController extends Controller
      * @param  \App\Testimonials  $testimonials
      * @return \Illuminate\Http\Response
      */
-    public function edit(Testimonials $testimonials)
+    public function edit(Testimonials $testimonial)
     {
-        //
+        return view('testimonials::edit')->with('testimonial', $testimonial);
     }
 
     /**
@@ -67,9 +75,13 @@ class TestimonialsController extends Controller
      * @param  \App\Testimonials  $testimonials
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Testimonials $testimonials)
+    public function update(Request $request, Testimonials $testimonial)
     {
-        //
+        $testimonial->name = $request->name;
+        $testimonial->text = $request->text;
+        $testimonial->save();
+        $request->session()->flash('message', 'Successfully modified the task!');
+        return redirect('/testimonials');
     }
 
     /**
@@ -78,8 +90,9 @@ class TestimonialsController extends Controller
      * @param  \App\Testimonials  $testimonials
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Testimonials $testimonials)
+    public function destroy(Testimonials $testimonial)
     {
-        //
+        $testimonial->delete();
+        return redirect('/testimonials');
     }
 }
