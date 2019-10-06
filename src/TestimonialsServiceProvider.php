@@ -24,7 +24,11 @@ class TestimonialsServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
-        $this->loadViewsFrom(__DIR__.'/views/', 'testimonials');
         $this->loadMigrationsFrom(__DIR__.'/Database/Migrations/');
+
+        $this->loadViewsFrom(resource_path('views/locomotif/testimonials'), 'testimonials');
+        $this->publishes([
+            __DIR__.'/views/' => resource_path('views/locomotif/testimonials'),
+        ]);
     }
 }
