@@ -9,6 +9,11 @@ use Locomotif\Testimonials\Model\Testimonials;
 
 class TestimonialsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('authgate');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +48,7 @@ class TestimonialsController extends Controller
     {
         
         $testimonial = Testimonials::create(['name' => $request->name,'text' => $request->text]);
-        return redirect('/testimonials/'.$testimonial->id);
+        return redirect('/admin/testimonials/'.$testimonial->id);
     }
 
     /**
@@ -81,7 +86,7 @@ class TestimonialsController extends Controller
         $testimonial->text = $request->text;
         $testimonial->save();
         $request->session()->flash('message', 'Successfully modified the task!');
-        return redirect('/testimonials');
+        return redirect('/admin/testimonials');
     }
 
     /**
@@ -93,6 +98,6 @@ class TestimonialsController extends Controller
     public function destroy(Testimonials $testimonial)
     {
         $testimonial->delete();
-        return redirect('/testimonials');
+        return redirect('/admin/testimonials');
     }
 }

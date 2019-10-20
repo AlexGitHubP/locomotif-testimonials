@@ -2,7 +2,7 @@
 
 @section('content')
 
-<a href="/testimonials">Back</a>
+<a href="/admin/testimonials">Back</a>
 
 <p>Testimonial detail</p>
 
