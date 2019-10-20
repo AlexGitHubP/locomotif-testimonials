@@ -31,10 +31,5 @@ class TestimonialsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/views/' => resource_path('views/locomotif/testimonials'),
         ]);
-
-        $this->publishes([
-            __DIR__.'/assets/' => base_path('public/backend/testimonials'),
-        ]);
-
     }
 }
