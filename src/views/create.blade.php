@@ -1,4 +1,4 @@
-@extends('testimonials::header')
+@extends('admin::header')
 
 @section('content')
 
